@@ -28,6 +28,7 @@ class linkedlist:
                 carry=1
                 ad=ad%10
                 sum = node(ad)
+
                 if self.h == None:
                     self.h = sum
                 else:
@@ -60,6 +61,15 @@ class linkedlist:
             current.next=l2
             l2=l2.next
 
+    def insert(self,data):
+        Node=node(data)
+        if self.h is None:
+            self.h=Node
+            return
+        temp=self.h
+        while temp.next!=None:
+            temp=temp.next
+        temp.next=Node
 
     def printlist(self):
         print_list = self.h
@@ -77,16 +87,20 @@ class linkedlist:
             temp = next
             self.h = newhead
 li = linkedlist()
+li.insert(1)
+li.insert(2)
+li.printlist()
 first=linkedlist()
 second=linkedlist()
 sum=linkedlist()
 first.number(234)
 #first.reverse()
-first.printlist()
+#first.printlist()
 second.number(1968)
-
+first.printlist()
 second.printlist()
+#second.printlist()
 sum.add(first.h,second.h)
-#sum.printlist()
-sum.reverse()
 sum.printlist()
+#sum.reverse()
+#sum.printlist()
