@@ -53,13 +53,13 @@ cnt=0
 i=0
 j=0
 while i<n and j<n:
-    if ar_time[i]<dp_time[i]:
+    if ar_time[i]<dp_time[j]:
         cnt+=1
         i+=1
     else:
         cnt-=1
         j+=1
     i+=1
-    if cnt>max_cnt:
+    if max_cnt<cnt:
         max_cnt=cnt
 print(max_cnt)
