@@ -9,13 +9,16 @@ class linked_list:
         node=Node(data,self.h)
         self.h=node
     def insert(self,data):
-        if self.h is None:
-            self.h=Node(data,None)
+        node=Node(data,None)
+        if self.h is None or self.h.data > node.data:
+            node.next=self.h
+            self.h=node
             return
         temp=self.h
-        while temp.next!=None:
+        while temp.next!=None and temp.next.data<node.data:
             temp=temp.next
-        temp.next=Node(data,None)
+        node.next=temp.next
+        temp.next=node
     def printlist(self):
         current=self.h
         while current!=None:
@@ -26,29 +29,30 @@ class linked_list:
         self.h=None
         for data in data_list:
             self.insert(data)
-    def merge(self,l1,l2):
-        while l1!=None and l2!=None:
-            
-            self.insert(l1.data)
-            l1=l1.next
-            self.insert(l2.data)
-            l2 = l2.next
-
-                #self.h=l2
-                    #l2=l2.next
-
+    def merge(self,first,second):
+        if first==None or second==None:
+            return None
+        while first!=None and second!=None:
+            self.insert(first.data)
+            first=first.next
+            self.insert(second.data)
+            second =second.next
+        if first!=None:
+            self.insert(first.data)
+        elif second!=None:
+            self.insert(second.data)
     def size(self):
         cnt=0
         list=self.h
         while(list!=None):
             cnt+=1
             list=list.next
-        print(cnt)
+        return cnt
 l1=linked_list()
-l1.insert_list([0,2,4,5])
+l1.insert_list([2,0,5,4])
 l1.printlist()
 l2=linked_list()
-l2.insert_list([1,3,8,9])
+l2.insert_list([1,3,8,9,7])
 l2.printlist()
 l3=linked_list()
 #l3.insert_in_begining(3)
