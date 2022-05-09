@@ -37,10 +37,12 @@ class linked_list:
             first=first.next
             self.insert(second.data)
             second =second.next
-        if first!=None:
+        while first!=None:
             self.insert(first.data)
-        elif second!=None:
+            first=first.next
+        while second!=None:
             self.insert(second.data)
+            second=second.next
     def size(self):
         cnt=0
         list=self.h
