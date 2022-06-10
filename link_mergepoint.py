@@ -40,6 +40,7 @@ a4=Node(7)
 a5=Node(8)
 a6=Node(9)
 a7=Node(4)
+
 l1.h.next=a1
 a1.next=a6
 a6.next=a3
